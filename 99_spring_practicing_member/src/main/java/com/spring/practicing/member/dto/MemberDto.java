@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MemberDto {
-	
+
 	private String memberId;
 	private String memberPw;
 	private String memberName;
@@ -148,4 +148,7 @@ public class MemberDto {
 	public void setEtc(String etc) {
 		this.etc = etc;
 	}
+
+	
+	
 }

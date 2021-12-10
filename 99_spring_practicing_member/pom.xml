@@ -148,11 +148,6 @@
 		    <version>5.0.8.RELEASE</version>
 		</dependency>
 		
-		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-config</artifactId>
-		    <version>5.0.8.RELEASE</version>
-		</dependency>
 		
 		<!-- Excel-->
 		<dependency>

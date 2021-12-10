@@ -1,74 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-		
-<mapper	namespace="practicingMember">
-	<select id="duplicatedMemberCheck" parameterType="String" resultType="MemberDto">
-	SELECT 
-			*
-	FROM
-			T_MEMBER
-	WHERE
-			MEMBER_ID = #{memberId}
-	</select>
-	
-	<insert id="joinMember" parameterType="MemberDto">
-		INSERT INTO
+
+<mapper namespace="mapper.member">
+
+	<select id="duplicatedMemberCheck" parameterType="String" resultType="MemberDto"> 
+		SELECT 
+				*
+		FROM
 				T_MEMBER
-		VALUES(
-				#{memberId},
-				#{memberPw},
-				#{memberName},
-				#{memberGender},
-				#{memberBirthY},
-				#{memberBirthM},
-				#{memberBirthD},
-				#{memberBirthGn}, <!-- 양력, 음력 -->
-				#{hp1},
-				#{hp2},
-				#{hp3},
-				#{smsstsYn}, <!-- sms 수신, 거부 설정 -->
-				#{email},
-				#{emailstsYn},
-				#{zipcode},
-				#{roadAddress},
-				#{jibunAddress},
-				#{namujiAddress},
-				now(),
-				#{etc}
+		WHERE
+				MEMBER_ID = #{memberID}
+	</select>
+
+	<insert id="joinMember" parameterType="MemberDto">
+		INSERT INTO T_MEMBER VALUES (
+			#{memberId},
+			#{memberPw},
+			#{memberName},
+			#{memberGender},
+			#{memberBirthY},
+			#{memberBirthM},
+			#{memberBirthD},
+			#{memberBirthGn}, <!-- 양력, 음력 -->
+			#{hp1},
+			#{hp2},
+			#{hp3},
+			#{smsstsYn}, <!-- sms 수신, 거부 설정 -->
+			#{email},
+			#{emailstsYn},
+			#{zipcode},
+			#{roadAddress},
+			#{jibunAddress},
+			#{namujiAddress},
+			now(),
+			#{etc}
 		)
-	</insert>
+	</insert>	
 	
 	<select id="loginMember" parameterType="String" resultType="MemberDto">
-	SELECT
-			*
-	FROM
-			T_MEMBER
-	WHERE
-			MEMBER_ID = #{memberId}
-	</select>	
+		SELECT
+				*
+		FROM
+				T_MEMBER
+		WHERE
+				MEMBER_ID = #{memberId}
+	</select>
 	
 	<select id="showAllMember" resultType="MemberDto">
-	SELECT
-			*
-	FROM
-			T_MEMBER
-	</select>	
+		SELECT
+				*
+		FROM
+				T_MEMBER
+	</select>
 	
-	<select id="showOneMember" parameterType="String" resultType="MemberDto">
-	SELECT
-			*
-	FROM
-			T_MEMBER
-	WHERE
-			MEMBER_ID = #{memberId}
+	<select id="showOneMember"  parameterType="String" resultType="MemberDto">
+		SELECT
+				*
+		FROM
+				T_MEMBER
+		WHERE
+				MEMBER_ID = #{memberId}
 	</select>
 	
 	<update id="updateMember" parameterType="MemberDto">
-	UPDATE
-			T_MEMBER
-	<set>
-		<if test='memberName != null and !memberName.equals("")'>
+		UPDATE
+				T_MEMBER
+		<set>
+			<if test='memberName != null and !memberName.equals("")'>
 				MEMBER_NAME = #{memberName},
 			</if>
 			<if test='memberGender != null and !memberGender.equals("")'>
@@ -119,15 +118,19 @@
 			<if test='etc != null and !etc.equals("")'>
 				ETC = #{etc} , 
 			</if>
-	</set>
-	WHERE
-			MEMBER_ID = #{memberId}
-	</update>
-	
+		</set>
+		WHERE
+				MEMBER_ID = #{memberId}
+	</update>	
+
 	<delete id="deleteMember" parameterType="String">
-	DELETE FROM
-			T_MEMBER
-	WHERE
-			MEMBER_ID = #{memberId}
+		DELETE FROM
+				T_MEMBER
+		WHERE
+				MEMBER_ID = #{memberId}
 	</delete>
+	
+		
+	
+
 </mapper>

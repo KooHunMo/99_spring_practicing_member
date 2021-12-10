@@ -11,7 +11,7 @@
 	</settings>
 
 	<typeAliases>
-		<typeAlias type="com.spring.training.member.dto.MemberDto" alias="MemberDto"/>
+		<typeAlias type="com.spring.practicing.member.dto.MemberDto" alias="MemberDto"/>
 	</typeAliases>
 
 </configuration>

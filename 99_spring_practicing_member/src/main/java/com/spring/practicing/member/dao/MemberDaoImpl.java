@@ -9,49 +9,47 @@ import org.springframework.stereotype.Repository;
 import com.spring.practicing.member.dto.MemberDto;
 
 @Repository
-public class MemberDaoImpl implements MemberDao {
-	
+public class MemberDaoImpl implements MemberDao{
+
 	@Autowired
 	private SqlSession sqlSession;
 	
+	
 	@Override
 	public void insert(MemberDto memberDto) throws Exception {
-		sqlSession.insert("practicingMember.joinMember", memberDto);
+		sqlSession.insert("mapper.member.joinMember" , memberDto);
 	}
-
+	
 	@Override
-	public MemberDto login(MemberDto memberDto) throws Exception {
-		
-		return sqlSession.selectOne("practicingMember.loginMember", memberDto);
+	public MemberDto login(MemberDto memberDto) {
+		return sqlSession.selectOne("mapper.member.loginMember" , memberDto);
 	}
-
+	
 	@Override
 	public MemberDto overlapped(String memberId) throws Exception {
-		
-		return sqlSession.selectOne("practicingMember.duplicatedMemberCheck", memberId);
+		return sqlSession.selectOne("mapper.member.duplicatedMemberCheck" , memberId);
 	}
-
+	
+	
 	@Override
 	public List<MemberDto> selectAllMember() throws Exception {
-		
-		return sqlSession.selectList("practicingMember.showAllMember");
+		return sqlSession.selectList("mapper.member.showAllMember");
 	}
 
+	
 	@Override
 	public MemberDto selectOneMember(String memberId) throws Exception {
-		
-		return sqlSession.selectOne("practicingMember.showOneMember", memberId);
+		return sqlSession.selectOne("mapper.member.showOneMember" , memberId);
 	}
 
 	@Override
 	public void updateMember(MemberDto memberDto) throws Exception {
-		sqlSession.update("practicingMember.updateMember", 	memberDto);
+		sqlSession.update("mapper.member.updateMember", memberDto);
 	}
-
+	
 	@Override
 	public void deleteMember(String memberId) throws Exception {
-		sqlSession.delete("practicingMember.deleteMember", 	memberId);
-		
+		sqlSession.delete("mapper.member.deleteMember", memberId);
 	}
-
+	
 }
